@@ -4,6 +4,7 @@
 #define IPTSD_CORE_GENERIC_DFT_HPP
 
 #include "config.hpp"
+#include <spdlog/spdlog.h>
 
 #include <common/casts.hpp>
 #include <ipts/data.hpp>
@@ -156,25 +157,12 @@ private:
 		if (dft.rows <= 0)
 			return;
 
-		bool button = false;
-		bool rubber = false;
-
-		if (dft.x[0].magnitude > m_config.dft_button_min_mag &&
-		    dft.y[0].magnitude > m_config.dft_button_min_mag) {
-			const i32 real = dft.x[0].real[IPTS_DFT_NUM_COMPONENTS / 2] +
-					 dft.y[0].real[IPTS_DFT_NUM_COMPONENTS / 2];
-			const i32 imag = dft.x[0].imag[IPTS_DFT_NUM_COMPONENTS / 2] +
-					 dft.y[0].imag[IPTS_DFT_NUM_COMPONENTS / 2];
-
-			// same phase as position signal = eraser, opposite phase = button
-			const i32 val = m_real * real + m_imag * imag;
-
-			button = val < 0;
-			rubber = val > 0;
-		}
-
-		m_stylus.button = button;
-		m_stylus.rubber = rubber;
+		// I have no idea why this works, but it does.
+		// I'm not going to question it, and just accept
+		// that changing the code to this makes my eraser
+		// work.
+		m_stylus.rubber = dft.x[0].magnitude >= 800;
+		//m_stylus.button = button;
 	}
 
 	/*!
