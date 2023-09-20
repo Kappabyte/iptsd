@@ -161,7 +161,7 @@ private:
 		// I'm not going to question it, and just accept
 		// that changing the code to this makes my eraser
 		// work.
-		m_stylus.rubber = dft.x[0].magnitude >= 800;
+		m_stylus.rubber = dft.x[0].magnitude >= m_config.dft_button_min_mag && dft.y[0].magnitude >= m_config.dft_button_mid_mag;
 		//m_stylus.button = button;
 	}
 
