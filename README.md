@@ -1,3 +1,10 @@
+# About this fork
+When trying to use iptsd on my surface pro 7, using the eraser on the back on my pen caused me trouble. It would rapidly change from eraser to pen mode, which left marks all over my documents whenever I tried to erase something.
+
+This fork is a *very* hacky solution that may have unintended consequences. I cannot guarentee that this fork will work for you. All changes were made in [dft.hpp](src/core/generic/dft.hpp) in [this commit](https://github.com/Kappabyte/iptsd/commit/9efcf24f450081673d839905def9ccf0c0d8b290).
+
+---
+Original README:
 # IPTSD
 
 This is the userspace touch processing daemon for Microsoft Surface devices using Intel Precise Touch technology.
