@@ -49,6 +49,9 @@ public:
 		case IPTS_DFT_ID_PRESSURE:
 			this->handle_pressure(dft);
 			break;
+		default:
+			// Ignored
+			break;
 		}
 	}
 
